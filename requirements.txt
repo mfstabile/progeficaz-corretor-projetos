@@ -1,0 +1,9 @@
+selenium
+mysql-connector-python
+gunicorn
+fastapi
+uvicorn[standard]
+requests
+gitpython
+pygithub
+python-dotenv
