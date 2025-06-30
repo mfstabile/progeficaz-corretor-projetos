@@ -2,10 +2,12 @@ from fastapi import FastAPI, Request, Header, HTTPException
 import hmac
 import hashlib
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 app = FastAPI()
 
-GITHUB_SECRET = os.getenv("GITHUB_SECRET").encode("utf-8")
+GITHUB_SECRET = os.environ.get("GITHUB_SECRET").encode("utf-8")
 
 def verify_signature(payload: bytes, signature: str):
     if not signature:
