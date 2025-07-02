@@ -27,9 +27,9 @@ def update_repos(git_username, repository, release):
         print(clone_path)
         cur_repo = Repo(clone_path)
         cur_repo.git.reset('--hard')
-        cur_repo.remotes.origin.pull("master")
+        cur_repo.remotes.origin.pull("main")
     
-    Git(clone_path).checkout(release)
+    # Git(clone_path).checkout(release)
 
 def create_src(git_username):
     if not (os.path.isdir(CLONE_BASE_PATH)):
@@ -40,9 +40,13 @@ def create_src(git_username):
 def delete_old_src(git_username, repository):
     rep = os.path.join(CLONE_BASE_PATH, git_username, repository)
     if os.path.isdir(rep):
+        print(f"Deleting old source code for {git_username}/{repository}")
         shutil.rmtree(rep)
+    else:
+        print(f"No old source code found for {git_username}/{repository}, skipping deletion.")
 
 def fetch_release(git_username, repository, release):
+    print(f"Fetching release {release} for {git_username}/{repository}")
     create_src(git_username)
     delete_old_src(git_username, repository)
     update_repos(git_username, repository, release)

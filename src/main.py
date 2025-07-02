@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request, Header, HTTPException, BackgroundTasks
+from fastapi import FastAPI, Request, Header, HTTPException, BackgroundTasks, Response
 import hmac
 import hashlib
 import os
@@ -26,6 +26,15 @@ def verify_signature(payload: bytes, signature: str):
     mac = hmac.new(GITHUB_SECRET, msg=payload, digestmod=hashlib.sha256)
     return hmac.compare_digest(mac.hexdigest(), received_sig)
 
+
+def check_user_repo_exists(git_username, repository_name):
+    if not db.get_user_exists(git_username):
+        db.insert_user(git_username)
+        
+    if not db.get_repo_exists(git_username, repository_name):
+        db.insert_repository(git_username, repository_name)
+
+
 @app.post("/webhook")
 async def github_webhook(
     request: Request,
@@ -51,9 +60,25 @@ async def github_webhook(
 
     return {"status": "ok"}
 
+@app.get("/progeficaz/{project_name}/svg/{git_username}/{repository_name}")
+async def root(project_name, git_username, repository_name):
+    report = sr.RepoReport(git_username = git_username, repository_name = repository_name, project_name = project_name)
+    svg = report.compile()
+    resp = Response(content=svg, media_type="image/svg+xml")
+    resp.headers['Cache-Control'] = 'no-cache'
+    resp.headers['Pragma'] = 'no-cache'
+
+    now = time.strftime("%Y %m %d %H %M")
+    txt = '{} {} {}'.format(git_username, repository_name, now).encode('utf-8')
+    etag = hashlib.sha1(txt).hexdigest()
+    resp.headers['ETag'] = etag
+    
+    return resp
+
 @app.post("/local/{project_name}/{git_username}/{repository_name}/{release}")
 async def root(request: Request, project_name: str, git_username: str, repository_name: str, release: str, background_tasks: BackgroundTasks):
     print(f'running tests for {git_username}')
+    check_user_repo_exists(git_username, repository_name)
     try:          
         fetch_release(git_username=git_username, repository=repository_name, release=release)
     except Exception as e:

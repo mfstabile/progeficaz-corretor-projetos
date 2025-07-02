@@ -52,7 +52,8 @@ class DockerProject1Runner():
         DockerConnectionHelper.wait_for_service(self.port)
 
     def deallocate(self):
+        print(f"Deallocating resources for {self.git_username}/{self.repository_name} on port {self.port}")
         subprocess.run(["docker", "stop", f"container_{self.git_username}_{self.id}"])
         subprocess.run(["docker", "rm", "-f", f"container_{self.git_username}_{self.id}"])
         # subprocess.run(["rm", "-rf", f"repo_folder_{self.id}"])
-        subprocess.run(["rm", "-rf", f"../repos/{self.git_username}"])
+        subprocess.run(["rm", "-rf", f"../repos/{self.git_username}/{self.repository_name}"])

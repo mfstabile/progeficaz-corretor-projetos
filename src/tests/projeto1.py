@@ -11,6 +11,7 @@ import os
 from pathlib import Path
 
 SVG_FOLDER = os.environ.get('SVG_FOLDER')
+CLONE_BASE_PATH = os.environ.get('CLONE_BASE_PATH')
 
 class Projeto1(BaseProject):
     def __init__(self, git_username, repository, release) -> None:
@@ -31,8 +32,9 @@ class Projeto1(BaseProject):
 
     def end(self):
         # Close the browser
-        self.driver.quit()
         self.container.deallocate()
+        self.driver.quit()
+        print("ended")
 
     
     def test_handout(self, name):
@@ -156,14 +158,14 @@ class Projeto1(BaseProject):
 
         try:
             # Check the SQLite database
-            file = Path(f'./repo_folder_{self.id}/banco.db')
+            file = Path(f'{CLONE_BASE_PATH}/{self.git_username}/{self.repository}/banco.db')
             if not file.exists():
                 raise FileNotFoundError
-            conn = sqlite3.connect(f'./repo_folder_{self.id}/banco.db')
+            conn = sqlite3.connect(f'{CLONE_BASE_PATH}/{self.git_username}/{self.repository}/banco.db')
             cursor = conn.cursor()
         except Exception as e:
             msg += f"\nNão foi possível conectar ao banco de dados SQLite. Certifique-se que o banco de dados está na raiz do projeto e com o nome 'banco.db'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f"\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"
             self.report(task_name=name, issue_text=msg)
             return msg
         
