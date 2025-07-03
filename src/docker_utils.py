@@ -56,4 +56,4 @@ class DockerProject1Runner():
         subprocess.run(["docker", "stop", f"container_{self.git_username}_{self.id}"])
         subprocess.run(["docker", "rm", "-f", f"container_{self.git_username}_{self.id}"])
         # subprocess.run(["rm", "-rf", f"repo_folder_{self.id}"])
-        subprocess.run(["rm", "-rf", f"../repos/{self.git_username}/{self.repository_name}"])
+        subprocess.run(["sudo","rm", "-rf", f"../repos/{self.git_username}/{self.repository_name}"])
