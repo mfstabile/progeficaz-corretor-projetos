@@ -41,7 +41,10 @@ def delete_old_src(git_username, repository):
     rep = os.path.join(CLONE_BASE_PATH, git_username, repository)
     if os.path.isdir(rep):
         print(f"Deleting old source code for {git_username}/{repository}")
-        shutil.rmtree(rep)
+        try:
+            shutil.rmtree(rep)
+        except Exception as e:
+            print(f"Error deleting old source code for {git_username}/{repository}: {e}")
     else:
         print(f"No old source code found for {git_username}/{repository}, skipping deletion.")
 
