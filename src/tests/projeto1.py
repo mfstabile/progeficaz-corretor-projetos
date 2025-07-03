@@ -74,7 +74,7 @@ class Projeto1(BaseProject):
             submit_button.click()
         except Exception as e:
             msg += f"\nNão foi possível encontrar o botão de submit. Certifique-se que o botão está com o atributo type='submit'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
         
@@ -89,7 +89,7 @@ class Projeto1(BaseProject):
             assert text.upper() in src
         except Exception as e:
             msg += f"\nNão foi possível encontrar o card com o título '{title}' e detalhes '{text}' na página inicial após apertar o botão de submissão."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
         
@@ -105,7 +105,7 @@ class Projeto1(BaseProject):
             self.driver.get(f"http://localhost:{self.port}")
         except Exception as e:
             msg += f"\nNão foi possível acessar o endereço http://localhost:8080"
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -115,7 +115,7 @@ class Projeto1(BaseProject):
             text_input = self.driver.find_element(By.NAME,"detalhes")
         except Exception as e:
             msg += f"\nNão foi possível encontrar os campos de título e detalhes. Certifique-se que os campos estão com os nomes corretos: 'titulo' e 'detalhes'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -128,7 +128,7 @@ class Projeto1(BaseProject):
             text_input.send_keys(text)
         except Exception as e:
             msg += f"\nNão foi possível preencher os campos de título e detalhes. Certifique-se que os campos são campos de texto e estão com os nomes corretos: 'titulo' e 'detalhes'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -138,7 +138,7 @@ class Projeto1(BaseProject):
             submit_button.click()
         except Exception as e:
             msg += f"\nNão foi possível encontrar o botão de submit. Certifique-se que o botão está com o atributo type='submit'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -152,7 +152,7 @@ class Projeto1(BaseProject):
             assert text.upper() in src
         except Exception as e:
             msg += f"\nNão foi possível encontrar o card com o título '{title}' e detalhes '{text}' na página inicial após apertar o botão de submissão."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -174,7 +174,7 @@ class Projeto1(BaseProject):
             annotation = cursor.fetchone()
         except Exception as e:
             msg += f"\nNão foi possível encontrar o card com o título '{title}' no banco de dados SQLite. Certifique-se que a tabela que armazena os cards se chama 'note' e que o campo que armazena o título se chama 'title' e que o campo que armazena os detalhes se chama 'content'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -184,7 +184,7 @@ class Projeto1(BaseProject):
             assert annotation[1] == text
         except Exception as e:
             msg += f"\nNão foi possível encontrar o card com o título '{title}' e detalhes '{text}' no banco de dados SQLite. Certifique-se que os dados estão sendo armazenados corretamente, que a tabela que armazena os cards se chama 'note' e que o campo que armazena o título se chama 'title' e que o campo que armazena os detalhes se chama 'content'. {e}"
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -195,7 +195,7 @@ class Projeto1(BaseProject):
             cursor.execute(f"INSERT INTO note (title, content) VALUES ('{title}', '{text}')")
         except Exception as e:
             msg += f"\nNão foi possível inserir um novo card no banco de dados SQLite. O campo id deve ser gerado automaticamente. Verifique se o comando 'INSERT INTO note (title, content) VALUES ('{title}', '{text}') funciona corretamente."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
         
@@ -211,7 +211,7 @@ class Projeto1(BaseProject):
             assert text.upper() in src
         except Exception as e:
             msg += f"\nNão foi possível encontrar o card com o título '{title}' e detalhes '{text}' na página inicial após inserir um novo card no banco de dados SQLite."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
         
@@ -225,7 +225,7 @@ class Projeto1(BaseProject):
             self.driver.get(f"http://localhost:{self.port}")
         except Exception as e:
             msg += f"\nNão foi possível acessar o endereço http://localhost:8080"
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -239,7 +239,7 @@ class Projeto1(BaseProject):
             delete_buttons = self.driver.find_elements(By.NAME,"delete_button")
         except Exception as e:
             msg += f"\nNão foi possível encontrar os botões de delete. Certifique-se que os botões estão com o atributo name='delete_button'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
         
@@ -276,7 +276,7 @@ class Projeto1(BaseProject):
                 assert text.upper() in src
             except Exception as e:
                 msg += f"\nNão foi possível criar {i+1} cards em sequência. O card com o título '{title}' e detalhes '{text}' não foi encontrado. Verifique se os campos estão com os nomes corretos: 'titulo' e 'detalhes' e o botão de submit está com o atributo type='submit'."
-                msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+                msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
                 self.report(task_name=name, issue_text=msg)
                 return msg
 
@@ -287,12 +287,12 @@ class Projeto1(BaseProject):
             delete_buttons[-4].click()
         except Exception as e:
             msg += f"\nNão foi possível encontrar o botão de delete. Certifique-se que o botão está com o atributo name='delete_button'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
             # Wait for the deletion to process
-            time.sleep(2)
+        time.sleep(2)
         try:
             # Check if the second card was deleted
             delete_buttons = self.driver.find_elements(By.NAME,"delete_button")
@@ -307,7 +307,7 @@ class Projeto1(BaseProject):
             assert cards[1][1].upper() not in src
         except Exception as e:
             msg += f"\nNão foi possível deletar o segundo card. Verifique se os cards estão sendo apresentados na ordem em que foram inseridos e se os botões de delete estão deletando o card correto."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -325,7 +325,7 @@ class Projeto1(BaseProject):
             new_buttons_count = len(delete_buttons)
             if new_buttons_count != buttons_count-1:
                 msg += "\nClicar no botão de delete não removeu o primeiro card."
-                msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+                msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
                 self.report(task_name=name, issue_text=msg)
                 return msg
 
@@ -334,7 +334,7 @@ class Projeto1(BaseProject):
             assert cards[0][1].upper() not in src
         except Exception as e:
             msg += f"\nNão foi possível deletar o primeiro card. Verifique se os cards estão sendo apresentados na ordem em que foram inseridos e se os botões de delete estão deletando o card correto."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -361,7 +361,7 @@ class Projeto1(BaseProject):
             assert cards[-1][1].upper() not in src, f"Card with details {cards[-1][1]} was not deleted"
         except Exception as e:
             msg += f"\nNão foi possível deletar o último card. Verifique se os cards estão sendo apresentados na ordem em que foram inseridos e se os botões de delete estão deletando o card correto."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -375,7 +375,7 @@ class Projeto1(BaseProject):
             assert cards[3][1].upper() in src, f"Card with details {cards[3][1]} was deleted"
         except Exception as e:
             msg += f"\nCards inseridos foram apagados indevidamente. Verifique se os botões de delete estão deletando o card correto."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
 
         msg += "Tarefa realizada com sucesso."
         self.report(task_name=name, issue_text=msg, grade=10.0, test_status="PASS")
@@ -389,7 +389,7 @@ class Projeto1(BaseProject):
             self.driver.get(f"http://localhost:{self.port}")
         except Exception as e:
             msg += f"\nNão foi possível acessar o endereço http://localhost:8080"
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -421,7 +421,7 @@ class Projeto1(BaseProject):
                 assert text.upper() in src
             except Exception as e:
                 msg += f"\nNão foi possível criar {i} cards em sequência. O card com o título '{title}' e detalhes '{text}' não foi encontrado. Verifique se os campos estão com os nomes corretos: 'titulo' e 'detalhes' e o botão de submit está com o atributo type='submit'."
-                msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+                msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
                 self.report(task_name=name, issue_text=msg)
                 return msg
 
@@ -433,7 +433,7 @@ class Projeto1(BaseProject):
             edit_buttons[-2].click()
         except Exception as e:
             msg += f"\nNão foi possível encontrar o botão de editar. Certifique-se que o botão está com o atributo name='edit_button'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
         
@@ -456,7 +456,7 @@ class Projeto1(BaseProject):
             text_input.send_keys("auto_test_details_0")
         except Exception as e:
             msg += f"\nNão foi possível preencher os campos de título e detalhes. Certifique-se que os campos são campos de texto e estão com os nomes corretos: 'titulo' e 'detalhes'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -467,7 +467,7 @@ class Projeto1(BaseProject):
             cancel_button[0].click()
         except Exception as e:
             msg += f"\nNão foi possível encontrar o botão de cancelar. Certifique-se que o texto do botão é 'Cancelar' ou que este possui o atributo name='edit_cancel'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -480,7 +480,7 @@ class Projeto1(BaseProject):
             assert current_url == url
         except Exception as e:
             msg += f"\nClicar no botão de cancelar não redirecionou para a página inicial"
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
         
@@ -491,7 +491,7 @@ class Projeto1(BaseProject):
         except Exception as e:
             msg += f"\nClicar no botão de Cancelar na tela de edição apagou o card com o título '{cards[0][0]}' e detalhes '{cards[0][1]}'."
             msg += f"\nAlterar os valores do título e detalhes e clicar em cancelar não deve alterar o card."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
         
@@ -500,7 +500,7 @@ class Projeto1(BaseProject):
             edit_buttons[-2].click()
         except Exception as e:
             msg += f"\nNão foi possível encontrar o botão de editar. Certifique-se que o botão está com o atributo name='edit_button'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -515,7 +515,7 @@ class Projeto1(BaseProject):
             text = text_input.get_attribute("value")
         except Exception as e:
             msg += f"\nNão foi possível encontrar os campos de título e detalhes. Certifique-se que os campos estão com os nomes corretos: 'titulo' e 'detalhes'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -524,7 +524,7 @@ class Projeto1(BaseProject):
             assert text == cards[0][1], "Os detalhes do card não foram preenchidos corretamente"
         except Exception as e:
             msg += f"\nOs campos de título e detalhes não foram preenchidos corretamente com os dados do card. Certifique-se que os cards são exibidos na ordem em que são criados e que os campos estão com os nomes corretos: 'titulo' e 'detalhes'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -533,7 +533,7 @@ class Projeto1(BaseProject):
             title_input.send_keys("auto_test_title_1")
         except Exception as e:
             msg += f"\nNão foi possível alterar o valor do campo de título. Certifique-se que o campo é um campo de texto e está com o nome correto: 'titulo'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
         
@@ -543,7 +543,7 @@ class Projeto1(BaseProject):
             save_button.click()
         except Exception as e:
             msg += f"\nNão foi possível encontrar o botão de salvar. Certifique-se que o botão está com o atributo type='submit' e que o texto do botão é 'Salvar'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
         
@@ -558,7 +558,7 @@ class Projeto1(BaseProject):
             assert cards[0][1].upper() in src, f"Card with details {cards[-1][1]} is no more"
         except Exception as e:
             msg += f"\nO card com o título '{cards[0][0]}' não foi editado para 'auto_test_title_1' mantendo os detalhes '{cards[0][1]}'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -568,7 +568,7 @@ class Projeto1(BaseProject):
             edit_buttons[-1].click()
         except Exception as e:
             msg += f"\nNão foi possível encontrar o botão de editar. Certifique-se que o botão está com o atributo name='edit_button'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -589,7 +589,7 @@ class Projeto1(BaseProject):
             text_input.send_keys("auto_test_details")
         except Exception as e:
             msg += f"\nNão foi possível alterar o valor do campo de detalhes. Certifique-se que o campo é um campo de texto e está com o nome correto: 'detalhes'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -599,7 +599,7 @@ class Projeto1(BaseProject):
             save_button.click()
         except Exception as e:
             msg += f"\nNão foi possível encontrar o botão de salvar. Certifique-se que o botão está com o atributo type='submit' e que o texto do botão é 'Salvar'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
         
@@ -614,7 +614,7 @@ class Projeto1(BaseProject):
             assert "auto_test_details".upper() in src, f"New details for {cards[-1][1]} was not saved"
         except Exception as e:
             msg += f"\nO card com o título '{cards[1][0]}' não foi editado para 'auto_test_details' mantendo os detalhes '{cards[1][1]}'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
         
@@ -624,7 +624,7 @@ class Projeto1(BaseProject):
             edit_buttons[-2].click()
         except Exception as e:
             msg += f"\nNão foi possível encontrar o botão de editar. Certifique-se que o botão está com o atributo name='edit_button'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -644,7 +644,7 @@ class Projeto1(BaseProject):
             text_input.send_keys("auto_test_details_2")
         except Exception as e:
             msg += f"\nNão foi possível alterar o valor do campo de título e detalhes. Certifique-se que os campos são campos de texto e estão com os nomes corretos: 'titulo' e 'detalhes'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -654,7 +654,7 @@ class Projeto1(BaseProject):
             save_button.click()
         except Exception as e:
             msg += f"\nNão foi possível encontrar o botão de salvar. Certifique-se que o botão está com o atributo type='submit' e que o texto do botão é 'Salvar'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
         
@@ -671,7 +671,7 @@ class Projeto1(BaseProject):
             assert "auto_test_details_2".upper() in src, f"New details for {cards[-1][1]} was not saved"
         except Exception as e:
             msg += f"\nAo alterar o título e detalhes do card com o título '{cards[0][0]}' e detalhes '{cards[0][1]}' para 'auto_test_title_2' e 'auto_test_details_2' respectivamente, o card com o título '{cards[0][0]}' e detalhes '{cards[0][1]}' não foi editado para 'auto_test_title_2' e 'auto_test_details_2'."
-            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}"'
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -681,9 +681,210 @@ class Projeto1(BaseProject):
     
     def test_favorite(self, name):
         msg = f"Ao testar se a tarefa '{name}' está funcionando: "
+        try:
+            self.driver.get(f"http://localhost:{self.port}")
+        except Exception as e:
+            msg += f"\nNão foi possível acessar o endereço http://localhost:8080"
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
+            self.report(task_name=name, issue_text=msg)
+            return msg
+
+        try:
+            delete_buttons = self.driver.find_elements(By.NAME,"delete_button")
+            count = len(delete_buttons)
+            for i in range(count):
+                delete_buttons[-1].click()
+                time.sleep(2)
+                delete_buttons = self.driver.find_elements(By.NAME,"delete_button")
+            delete_buttons = self.driver.find_elements(By.NAME,"delete_button")
+        except Exception as e:
+            msg += f"\nNão foi possível encontrar os botões de delete. Certifique-se que o delete esteja funcionando."
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
+            self.report(task_name=name, issue_text=msg)
+            return msg
+        
+        if len(delete_buttons) != 0:
+            msg += "\nNão foi possível deletar todos os cards. Certifique-se que o delete esteja funcionando."
+            self.report(task_name=name, issue_text=msg)
+            return msg
+        
+        cards = []
+        for i in range(5):
+            try:
+                # Find the form elements and fill them out
+                title_input = self.driver.find_element(By.NAME,"titulo")
+                text_input = self.driver.find_element(By.NAME,"detalhes")
+                
+                title = "Title"+str(i)
+                text = "text"+str(i)
+                cards.append((title,text))
+
+                title_input.send_keys(title)
+                text_input.send_keys(text)
+
+                # Submit the form
+                submit_button = self.driver.find_element(By.CSS_SELECTOR,"[type='submit']")
+                submit_button.click()
+
+                # Wait for the submission to process
+                time.sleep(2)
+
+                # Check if the card was created
+                src = self.driver.page_source.upper()
+                assert title.upper() in src
+                assert text.upper() in src
+            except Exception as e:
+                msg += f"\nNão foi possível criar {i+1} cards em sequência. O card com o título '{title}' e detalhes '{text}' não foi encontrado. Verifique se os campos estão com os nomes corretos: 'titulo' e 'detalhes' e o botão de submit está com o atributo type='submit'."
+                msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
+                self.report(task_name=name, issue_text=msg)
+                return msg
+        
+        try:
+            # Favorite the third card
+            favorite_buttons = self.driver.find_elements(By.NAME,"favorite_button")
+            buttons_count = len(favorite_buttons)
+            favorite_buttons[-3].click()
+        except Exception as e:
+            msg += f"\nNão foi possível encontrar o botão de favoritar. Certifique-se que o botão está com o atributo name='favorite_button'."
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
+            self.report(task_name=name, issue_text=msg)
+            return msg
+
+        # Wait for the favoriting to process
+        time.sleep(2)
+        try:
+            # Check if the third card was favorited
+            # Read the cards in order and check if Title2 appears before Title0
+            cards_elements = self.driver.find_elements(By.CLASS_NAME, "card")
+            card_titles = [card.text.upper() for card in cards_elements]
+            index_title2 = next((i for i, t in enumerate(card_titles) if "TITLE2" in t), -1)
+            index_title0 = next((i for i, t in enumerate(card_titles) if "TITLE0" in t), -1)
+            assert index_title2 != -1 and index_title0 != -1, "Title2 or Title0 not found among cards"
+            assert index_title2 < index_title0, "Title2 does not appear before Title0"
+
+        except Exception as e:
+            msg += f"\nFavoritar o terceiro card não o fez ser exibido primeiro. Verifique se os cards estão sendo apresentados na ordem em que foram inseridos e se os favoritados estão aparecendo primeiro."
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
+            self.report(task_name=name, issue_text=msg)
+            return msg
+        
+        try:
+            # UNfavorite the third card
+            favorite_buttons = self.driver.find_elements(By.NAME,"favorite_button")
+            favorite_buttons[-5].click()
+        except Exception as e:
+            msg += f"\nNão foi possível encontrar o botão de desfavoritar. Certifique-se que o botão está com o atributo name='favorite_button'."
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
+            self.report(task_name=name, issue_text=msg)
+            return msg
+        
+        # Wait for the favoriting to process
+        time.sleep(2)
+        try:
+            # Check if the third card was favorited
+            # Read the cards in order and check if Title2 appears before Title0
+            cards_elements = self.driver.find_elements(By.CLASS_NAME, "card")
+            card_titles = [card.text.upper() for card in cards_elements]
+            index_title2 = next((i for i, t in enumerate(card_titles) if "TITLE2" in t), -1)
+            index_title0 = next((i for i, t in enumerate(card_titles) if "TITLE0" in t), -1)
+            assert index_title2 != -1 and index_title0 != -1, "Title2 or Title0 not found among cards"
+            assert index_title2 > index_title0, "Title2 does not appear after Title0"
+
+        except Exception as e:
+            msg += f"\nDesfavoritar o card não o fez ser exibido na posição original. Verifique se os cards estão sendo apresentados na ordem em que foram inseridos e se os favoritados estão aparecendo primeiro."
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
+            self.report(task_name=name, issue_text=msg)
+            return msg
+        
+        try:
+            # Favorite the second and fourth cards
+            favorite_buttons = self.driver.find_elements(By.NAME,"favorite_button")
+            favorite_buttons[-4].click()
+            time.sleep(2)
+            favorite_buttons = self.driver.find_elements(By.NAME,"favorite_button")
+            favorite_buttons[-2].click()
+        except Exception as e:
+            msg += f"\nNão foi possível encontrar o botão de favoritar. Certifique-se que o botão está com o atributo name='favorite_button'."
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
+            self.report(task_name=name, issue_text=msg)
+            return msg
+        # Wait for the favoriting to process
+        time.sleep(2)
+        try:
+            # Check if the second and fourth cards were favorited
+            # Read the cards in order and check if Title1 appears before Title3 and Title3 appears before Title0
+            cards_elements = self.driver.find_elements(By.CLASS_NAME, "card")
+            card_titles = [card.text.upper() for card in cards_elements]
+            index_title1 = next((i for i, t in enumerate(card_titles) if "TITLE1" in t), -1)
+            index_title3 = next((i for i, t in enumerate(card_titles) if "TITLE3" in t), -1)
+            index_title0 = next((i for i, t in enumerate(card_titles) if "TITLE0" in t), -1)
+            assert index_title1 != -1 and index_title3 != -1 and index_title0 != -1, "Title1, Title3 or Title0 not found among cards"
+            assert index_title1 < index_title3 < index_title0, "Notes are not in the expected order"
+
+        except Exception as e:
+            msg += f"\nFavoritar o card não o fez ser exibido na posição original. Verifique se os cards estão sendo apresentados na ordem em que foram inseridos e se os favoritados estão aparecendo primeiro."
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
+            self.report(task_name=name, issue_text=msg)
+            return msg
+
+        try:
+            # UNfavorite the second card
+            favorite_buttons = self.driver.find_elements(By.NAME,"favorite_button")
+            favorite_buttons[-5].click()
+        except Exception as e:
+            msg += f"\nNão foi possível encontrar o botão de favoritar. Certifique-se que o botão está com o atributo name='favorite_button'."
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
+            self.report(task_name=name, issue_text=msg)
+            return msg
+        
+        time.sleep(2)
+        try:
+            # Check if the second and fourth cards were favorited
+            # Read the cards in order and check if Title1 appears before Title3 and Title3 appears before Title0
+            cards_elements = self.driver.find_elements(By.CLASS_NAME, "card")
+            card_titles = [card.text.upper() for card in cards_elements]
+            index_title1 = next((i for i, t in enumerate(card_titles) if "TITLE1" in t), -1)
+            index_title3 = next((i for i, t in enumerate(card_titles) if "TITLE3" in t), -1)
+            index_title0 = next((i for i, t in enumerate(card_titles) if "TITLE0" in t), -1)
+            assert index_title1 != -1 and index_title3 != -1 and index_title0 != -1, "Title1, Title3 or Title0 not found among cards"
+            assert index_title3 < index_title0 < index_title1, "Notes are not in the expected order"
+
+        except Exception as e:
+            msg += f"\nFavoritar o card não o fez ser exibido na posição original. Verifique se os cards estão sendo apresentados na ordem em que foram inseridos e se os favoritados estão aparecendo primeiro."
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
+            self.report(task_name=name, issue_text=msg)
+            return msg
+        
+        try:
+            # UNfavorite the fourth card
+            favorite_buttons = self.driver.find_elements(By.NAME,"favorite_button")
+            favorite_buttons[-5].click()
+        except Exception as e:
+            msg += f"\nNão foi possível encontrar o botão de favoritar. Certifique-se que o botão está com o atributo name='favorite_button'."
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
+            self.report(task_name=name, issue_text=msg)
+            return msg
+        
+        time.sleep(2)
+        try:
+            # Check if the second and fourth cards were favorited
+            # Read the cards in order and check if Title1 appears before Title3 and Title3 appears before Title0
+            cards_elements = self.driver.find_elements(By.CLASS_NAME, "card")
+            card_titles = [card.text.upper() for card in cards_elements]
+            index_title1 = next((i for i, t in enumerate(card_titles) if "TITLE1" in t), -1)
+            index_title3 = next((i for i, t in enumerate(card_titles) if "TITLE3" in t), -1)
+            index_title0 = next((i for i, t in enumerate(card_titles) if "TITLE0" in t), -1)
+            assert index_title1 != -1 and index_title3 != -1 and index_title0 != -1, "Title1, Title3 or Title0 not found among cards"
+            assert index_title0 < index_title1 < index_title3, "Notes are not in the expected order"
+
+        except Exception as e:
+            msg += f"\nFavoritar o card não o fez ser exibido na posição original. Verifique se os cards estão sendo apresentados na ordem em que foram inseridos e se os favoritados estão aparecendo primeiro."
+            msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
+            self.report(task_name=name, issue_text=msg)
+            return msg
+
         msg += "Tarefa realizada com sucesso."
         self.report(task_name=name, issue_text=msg, grade=10.0, test_status="PASS")
-    
 
     def test_tags(self, name):
         msg = f"Ao testar se a tarefa '{name}' está funcionando: "
