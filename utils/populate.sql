@@ -5,4 +5,3 @@ INSERT INTO `eficaz`.`tasks` (`task_name`, `project_name`, `corrector_method`) V
 INSERT INTO `eficaz`.`tasks` (`task_name`, `project_name`, `corrector_method`) VALUES ('Apagar anotações', 'Projeto1', 'test_delete');
 INSERT INTO `eficaz`.`tasks` (`task_name`, `project_name`, `corrector_method`) VALUES ('Editar anotações', 'Projeto1', 'test_edit');
 INSERT INTO `eficaz`.`tasks` (`task_name`, `project_name`, `corrector_method`) VALUES ('Favoritar anotações', 'Projeto1', 'test_favorite');
-INSERT INTO `eficaz`.`tasks` (`task_name`, `project_name`, `corrector_method`) VALUES ('Sistema de tags', 'Projeto1', 'test_tags');
