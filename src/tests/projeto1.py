@@ -22,6 +22,8 @@ class Projeto1(BaseProject):
         options.add_argument("--no-sandbox")  # This make Chromium reachable
         options.add_argument("--disable-dev-shm-usage")  # Overcomes limited resource problems
         options.add_argument("--incognito")
+        options.add_argument("--window-size=1920,1080")
+
 
         self.driver = webdriver.Chrome(options=options)
         self.container = DockerProject1Runner()
