@@ -38,18 +38,16 @@ def create_src(git_username):
     if not (os.path.isdir(os.path.join(CLONE_BASE_PATH, git_username))):
         os.mkdir(os.path.join(CLONE_BASE_PATH, git_username))
 
-def handle_exception(exc):
-    # exc is an instance of shutil.RmtreeError
-    path = exc.path
+def remove_readonly(func, path, exc_info):
     os.chmod(path, stat.S_IWRITE)
-    exc.rerun()  # tenta novamente a remoção
+    func(path)
 
 def delete_old_src(git_username, repository):
     rep = os.path.join(CLONE_BASE_PATH, git_username, repository)
     if os.path.isdir(rep):
         print(f"Deleting old source code for {git_username}/{repository}")
         try:
-            shutil.rmtree(rep, onexc=handle_exception)
+            shutil.rmtree(rep, onerror=remove_readonly)
         except Exception as e:
             print(f"Error deleting old source code for {git_username}/{repository}: {e}")
     else:
