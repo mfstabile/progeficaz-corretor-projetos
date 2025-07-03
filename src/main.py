@@ -35,10 +35,12 @@ def check_user_repo_exists(git_username, repository_name):
         db.insert_repository(git_username, repository_name)
 
 
-@app.post("/webhook")
+@app.post("/progeficaz/{project_name}")
 async def github_webhook(
     request: Request,
-    x_hub_signature_256: str = Header(default=None)
+    project_name: str,
+    background_tasks: BackgroundTasks,
+    x_hub_signature_256: str = Header(default=None),    
 ):
     payload = await request.body()
 
@@ -48,15 +50,23 @@ async def github_webhook(
     data = await request.json()
 
     if data.get("action") == "published":
-        dono = data.get("repository", {}).get("owner", {}).get("login")
-        repositorio = data.get("repository", {}).get("name")
-        nome_release = data.get("release", {}).get("name")
-        tag = data.get("release", {}).get("tag_name")
+        git_username = data.get("repository", {}).get("owner", {}).get("login")
+        repository_name = data.get("repository", {}).get("name")
+        release = data.get("release", {}).get("name")
 
-        print(f"📦 Repositório: {repositorio}")
-        print(f"👑 Dono: {dono}")
-        print(f"🏷️ Tag da release: {tag}")
-        print(f"📄 Nome da release: {nome_release}")
+        print(f"📦 Repositório: {repository_name}")
+        print(f"👑 Dono: {git_username}")
+        print(f"📄 Nome da release: {release}")
+
+        check_user_repo_exists(git_username, repository_name)
+        try:          
+            fetch_release(git_username=git_username, repository=repository_name, release=release)
+        except Exception as e:
+            print(f"Error cloning repository {git_username}/{repository_name}:" + str(e))
+            return {"message": 'no repository access'}
+        background_tasks.add_task(auto_test, git_username, repository_name, release, project_name)
+
+        return {"message": "received"}
 
     return {"status": "ok"}
 
