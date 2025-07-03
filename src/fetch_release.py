@@ -4,7 +4,7 @@ import os
 import shutil
 import re
 import json
-import stat
+import pathlib
 
 CLONE_BASE_PATH = os.environ.get('CLONE_BASE_PATH')
 GIT_BASE_URL = os.environ.get('GIT_BASE_URL')
@@ -38,16 +38,18 @@ def create_src(git_username):
     if not (os.path.isdir(os.path.join(CLONE_BASE_PATH, git_username))):
         os.mkdir(os.path.join(CLONE_BASE_PATH, git_username))
 
-def remove_readonly(func, path, exc_info):
-    os.chmod(path, stat.S_IWRITE)
-    func(path)
 
 def delete_old_src(git_username, repository):
     rep = os.path.join(CLONE_BASE_PATH, git_username, repository)
     if os.path.isdir(rep):
         print(f"Deleting old source code for {git_username}/{repository}")
         try:
-            shutil.rmtree(rep, onerror=remove_readonly)
+            for pyc in pathlib.Path(rep).rglob('*.pyc'):
+                try:
+                    pyc.unlink()
+                except Exception as e:
+                    print(f"Erro ao remover {pyc}: {e}")
+            shutil.rmtree(rep)
         except Exception as e:
             print(f"Error deleting old source code for {git_username}/{repository}: {e}")
     else:
