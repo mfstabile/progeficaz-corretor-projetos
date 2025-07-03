@@ -1,3 +1,4 @@
+USE eficaz;
 DROP TABLE IF EXISTS task_tests;
 DROP TABLE IF EXISTS tasks;
 DROP TABLE IF EXISTS projects;
