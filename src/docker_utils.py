@@ -48,7 +48,7 @@ class DockerProject1Runner():
         local_path = os.path.abspath(f"../repos/{git_username}/{repository_name}")
         # subprocess.run(["cp", "-a", f"../repos/{git_username}/{repository_name}/.", f"./repo_folder_{self.id}/"])
         # print("docker", "run", "-p", f"{self.port}:8080", "-d", "-v", f"./repo_folder_{self.id}:/usr/src/app/repo_folder","--name", f"container_{self.id}", "project1a")
-        subprocess.run(["docker", "run", "-p", f"{self.port}:5000", "-d", "-v", f"{local_path}:/usr/src/app/repo_folder","--name", f"container_{git_username}_{self.id}", "project1"])
+        subprocess.run(["docker", "run", "--shm-size=256m", "-p", f"{self.port}:5000", "-d", "-v", f"{local_path}:/usr/src/app/repo_folder","--name", f"container_{git_username}_{self.id}", "project1"])
         DockerConnectionHelper.wait_for_service(self.port)
 
     def deallocate(self):
