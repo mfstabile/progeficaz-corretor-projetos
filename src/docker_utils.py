@@ -25,7 +25,7 @@ class DockerConnectionHelper():
         ok_in_a_row = 0
         backoff = 0.5
         expect_status=200
-        expect_text='Get-it', 
+        expect_text='Get-it'
 
         with requests.Session() as s:
             while time.time() < deadline:
