@@ -18,7 +18,7 @@ class Projeto1(BaseProject):
         super().__init__(git_username, repository, release, "Projeto1")
         # Set up the WebDriver
         options = Options()
-        options.add_argument("--headless")
+        options.add_argument("--headless=new")
         options.add_argument("--no-sandbox")  # This make Chromium reachable
         options.add_argument("--disable-dev-shm-usage")  # Overcomes limited resource problems
         options.add_argument("--incognito")
@@ -26,6 +26,7 @@ class Projeto1(BaseProject):
         options.add_argument("--disable-gpu")
         options.add_argument("--disable-backgrounding-occluded-windows")
         options.add_argument("--disable-renderer-backgrounding")
+        options.add_argument("--remote-debugging-pipe")
 
 
         self.driver = webdriver.Chrome(options=options)
