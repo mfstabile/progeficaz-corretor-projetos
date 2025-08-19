@@ -19,4 +19,4 @@ EXPOSE 5000
 # ENV NAME World
 
 # Run app.py when the container launches
-CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
+CMD ["flask", "run", "--no-reload", "--host=0.0.0.0", "--port=5000"]

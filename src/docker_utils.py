@@ -1,7 +1,6 @@
 import random
 import subprocess
 import time
-import socket
 import requests
 import os
 
@@ -20,23 +19,50 @@ class PortHelper:
 class DockerConnectionHelper():
 
     @staticmethod
-    def wait_for_service(port, host='localhost', timeout=60):
-        start_time = time.time()
+    def wait_for_service(port, host='127.0.0.1', timeout=60):
         url = f"http://{host}:{port}"
-        while True:
-            try:
-                response = requests.get(url)
-                if response.status_code == 200:
-                    print("Service is ready")
-                    break
-            except requests.exceptions.RequestException:
-                # Handle connection errors, like service not yet available
-                pass
+        deadline = time.time() + timeout
+        ok_in_a_row = 0
+        backoff = 0.5
+        expect_status=200
+        expect_text='Get-it', 
+
+        with requests.Session() as s:
+            while time.time() < deadline:
+                try:
+                    r = s.get(url, timeout=(2, 2), allow_redirects=False)
+                    if r.status_code == expect_status:
+                        if expect_text is None or (expect_text in r.text):
+                            ok_in_a_row += 1
+                            if ok_in_a_row >= 2:  # duas leituras válidas seguidas
+                                print("Service is ready")
+                                return
+                        else:
+                            ok_in_a_row = 0
+                    else:
+                        ok_in_a_row = 0
+                except requests.RequestException:
+                    ok_in_a_row = 0
+
+                time.sleep(backoff)
+                backoff = min(backoff * 1.5, 2.0)
+
+        raise TimeoutError(f"Timed out waiting for service at {url}")
+        # start_time = time.time()
+        # while True:
+        #     try:
+        #         response = requests.get(url)
+        #         if response.status_code == 200:
+        #             print("Service is ready")
+        #             break
+        #     except requests.exceptions.RequestException:
+        #         # Handle connection errors, like service not yet available
+        #         pass
             
-            current_time = time.time()
-            if current_time - start_time >= timeout:
-                raise TimeoutError(f"Timed out waiting for service at {url}")
-            time.sleep(1)
+        #     current_time = time.time()
+        #     if current_time - start_time >= timeout:
+        #         raise TimeoutError(f"Timed out waiting for service at {url}")
+        #     time.sleep(1)
 
 class DockerProject1Runner():
 
@@ -48,7 +74,7 @@ class DockerProject1Runner():
         local_path = os.path.abspath(f"../repos/{git_username}/{repository_name}")
         # subprocess.run(["cp", "-a", f"../repos/{git_username}/{repository_name}/.", f"./repo_folder_{self.id}/"])
         # print("docker", "run", "-p", f"{self.port}:8080", "-d", "-v", f"./repo_folder_{self.id}:/usr/src/app/repo_folder","--name", f"container_{self.id}", "project1a")
-        subprocess.run(["docker", "run", "--shm-size=256m", "-p", f"{self.port}:5000", "-d", "-v", f"{local_path}:/usr/src/app/repo_folder","--name", f"container_{git_username}_{self.id}", "project1"])
+        subprocess.run(["docker", "run", "-p", f"{self.port}:5000", "-d", "-v", f"{local_path}:/usr/src/app/repo_folder","--name", f"container_{git_username}_{self.id}", "project1"])
         DockerConnectionHelper.wait_for_service(self.port)
 
     def deallocate(self):

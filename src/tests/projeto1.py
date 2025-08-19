@@ -22,7 +22,10 @@ class Projeto1(BaseProject):
         options.add_argument("--no-sandbox")  # This make Chromium reachable
         options.add_argument("--disable-dev-shm-usage")  # Overcomes limited resource problems
         options.add_argument("--incognito")
-        options.add_argument("--window-size=1920,1080")
+        options.add_argument("--window-size=1280,800")
+        options.add_argument("--disable-gpu")
+        options.add_argument("--disable-backgrounding-occluded-windows")
+        options.add_argument("--disable-renderer-backgrounding")
 
 
         self.driver = webdriver.Chrome(options=options)
@@ -45,7 +48,7 @@ class Projeto1(BaseProject):
         try:
             self.driver.get(f"http://localhost:{self.port}")
         except Exception as e:
-            msg += f"\nNão foi possível acessar o endereço http://localhost:8080."
+            msg += f"\nNão foi possível acessar o endereço http://localhost:5000."
             self.report(task_name=name, issue_text=msg)
             return msg
 
@@ -106,7 +109,7 @@ class Projeto1(BaseProject):
             # Open the website
             self.driver.get(f"http://localhost:{self.port}")
         except Exception as e:
-            msg += f"\nNão foi possível acessar o endereço http://localhost:8080"
+            msg += f"\nNão foi possível acessar o endereço http://localhost:5000"
             msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
@@ -226,7 +229,7 @@ class Projeto1(BaseProject):
         try:
             self.driver.get(f"http://localhost:{self.port}")
         except Exception as e:
-            msg += f"\nNão foi possível acessar o endereço http://localhost:8080"
+            msg += f"\nNão foi possível acessar o endereço http://localhost:5000"
             msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
@@ -390,7 +393,7 @@ class Projeto1(BaseProject):
             # Open the website
             self.driver.get(f"http://localhost:{self.port}")
         except Exception as e:
-            msg += f"\nNão foi possível acessar o endereço http://localhost:8080"
+            msg += f"\nNão foi possível acessar o endereço http://localhost:5000"
             msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
@@ -686,7 +689,7 @@ class Projeto1(BaseProject):
         try:
             self.driver.get(f"http://localhost:{self.port}")
         except Exception as e:
-            msg += f"\nNão foi possível acessar o endereço http://localhost:8080"
+            msg += f"\nNão foi possível acessar o endereço http://localhost:5000"
             msg += f'\nO código gerou uma exceção inesperada: {e.__class__.__name__}: {e}'
             self.report(task_name=name, issue_text=msg)
             return msg
