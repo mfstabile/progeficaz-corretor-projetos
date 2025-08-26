@@ -759,6 +759,7 @@ class Projeto1(BaseProject):
             # Read the cards in order and check if Title2 appears before Title0
             cards_elements = self.driver.find_elements(By.CLASS_NAME, "card")
             card_titles = [card.get_attribute("innerHTML").upper() for card in cards_elements]
+            print("Cards found:", card_titles)
             index_title2 = next((i for i, t in enumerate(card_titles) if "TITLE2" in t), -1)
             index_title0 = next((i for i, t in enumerate(card_titles) if "TITLE0" in t), -1)
             assert index_title2 != -1 and index_title0 != -1, "Title2 or Title0 not found among cards"
