@@ -762,7 +762,8 @@ class Projeto1(BaseProject):
             # Check if the third card was favorited
             # Read the cards in order and check if Title2 appears before Title0
             cards_elements = self.driver.find_elements(By.CLASS_NAME, "card")
-            card_titles = [card.text.upper() for card in cards_elements]
+            card_titles = [card.get_attribute("innerHTML") for card in cards_elements]
+            print("Cards found:", card_titles)
             index_title2 = next((i for i, t in enumerate(card_titles) if "TITLE2" in t), -1)
             index_title0 = next((i for i, t in enumerate(card_titles) if "TITLE0" in t), -1)
             assert index_title2 != -1 and index_title0 != -1, "Title2 or Title0 not found among cards"
@@ -790,7 +791,7 @@ class Projeto1(BaseProject):
             # Check if the third card was favorited
             # Read the cards in order and check if Title2 appears before Title0
             cards_elements = self.driver.find_elements(By.CLASS_NAME, "card")
-            card_titles = [card.text.upper() for card in cards_elements]
+            card_titles = [card.get_attribute("innerHTML") for card in cards_elements]
             index_title2 = next((i for i, t in enumerate(card_titles) if "TITLE2" in t), -1)
             index_title0 = next((i for i, t in enumerate(card_titles) if "TITLE0" in t), -1)
             assert index_title2 != -1 and index_title0 != -1, "Title2 or Title0 not found among cards"
@@ -820,7 +821,7 @@ class Projeto1(BaseProject):
             # Check if the second and fourth cards were favorited
             # Read the cards in order and check if Title1 appears before Title3 and Title3 appears before Title0
             cards_elements = self.driver.find_elements(By.CLASS_NAME, "card")
-            card_titles = [card.text.upper() for card in cards_elements]
+            card_titles = [card.get_attribute("innerHTML") for card in cards_elements]
             index_title1 = next((i for i, t in enumerate(card_titles) if "TITLE1" in t), -1)
             index_title3 = next((i for i, t in enumerate(card_titles) if "TITLE3" in t), -1)
             index_title0 = next((i for i, t in enumerate(card_titles) if "TITLE0" in t), -1)
@@ -848,7 +849,7 @@ class Projeto1(BaseProject):
             # Check if the second and fourth cards were favorited
             # Read the cards in order and check if Title1 appears before Title3 and Title3 appears before Title0
             cards_elements = self.driver.find_elements(By.CLASS_NAME, "card")
-            card_titles = [card.text.upper() for card in cards_elements]
+            card_titles = [card.get_attribute("innerHTML") for card in cards_elements]
             index_title1 = next((i for i, t in enumerate(card_titles) if "TITLE1" in t), -1)
             index_title3 = next((i for i, t in enumerate(card_titles) if "TITLE3" in t), -1)
             index_title0 = next((i for i, t in enumerate(card_titles) if "TITLE0" in t), -1)
@@ -876,7 +877,7 @@ class Projeto1(BaseProject):
             # Check if the second and fourth cards were favorited
             # Read the cards in order and check if Title1 appears before Title3 and Title3 appears before Title0
             cards_elements = self.driver.find_elements(By.CLASS_NAME, "card")
-            card_titles = [card.text.upper() for card in cards_elements]
+            card_titles = [card.get_attribute("innerHTML") for card in cards_elements]
             index_title1 = next((i for i, t in enumerate(card_titles) if "TITLE1" in t), -1)
             index_title3 = next((i for i, t in enumerate(card_titles) if "TITLE3" in t), -1)
             index_title0 = next((i for i, t in enumerate(card_titles) if "TITLE0" in t), -1)
